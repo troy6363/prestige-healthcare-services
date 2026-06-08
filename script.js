@@ -608,11 +608,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = card.getBoundingClientRect();
                 const cardHeight = rect.height;
                 
-                // Scroll reveal range
-                // Start revealing when the top of the card touches the bottom of the viewport
-                const startY = viewportHeight;
-                // Fully reveal when the card's top reaches 60% of the viewport height
-                const endY = viewportHeight * 0.6;
+                // Scroll reveal range (Mobile Only)
+                // Start revealing when the top of the card is at 82% of viewport height (remains invisible below this)
+                const startY = viewportHeight * 0.82;
+                // Fully reveal when the card's top reaches 52% of the viewport height (near the screen center)
+                const endY = viewportHeight * 0.52;
                 
                 let progress = 0;
                 if (rect.top <= endY) {
