@@ -2682,11 +2682,11 @@ a {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
         will-change: transform;
-        min-height: 70px;
+        min-height: 80px;
     }
 
     .main-header.scrolled {
-        min-height: 60px;
+        min-height: 70px;
         background-color: rgba(255, 255, 255, 0.75) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
@@ -2694,9 +2694,9 @@ a {
     }
 
     .header-logo {
-        height: 110px;
-        margin: -5px 0 -25px 0;
-        max-width: 150px;
+        height: 140px;
+        margin: -10px 0 -35px 0;
+        max-width: 180px;
     }
 
     /* Responsive Header & Hamburger Navigation */
@@ -2725,10 +2725,10 @@ a {
 
     .nav-menu {
         position: fixed !important;
-        top: 70px;
+        top: 80px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 80px);
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
@@ -2743,8 +2743,8 @@ a {
     }
 
     .main-header.scrolled .nav-menu {
-        top: 60px;
-        height: calc(100vh - 60px);
+        top: 70px;
+        height: calc(100vh - 70px);
     }
 
     .nav-menu.active {
@@ -2965,9 +2965,9 @@ a {
     }
 
     .header-logo {
-        height: 90px;
-        margin: -5px 0 -20px 0;
-        max-width: 130px;
+        height: 120px;
+        margin: -8px 0 -25px 0;
+        max-width: 155px;
     }
 
     .hero-section {
@@ -3032,6 +3032,6 @@ a {
 /* Up to 360px (Extra Small Mobile Phones) */
 @media (max-width: 360px) {
     .header-logo {
-        max-width: 110px;
+        max-width: 130px;
     }
 }
