@@ -654,4 +654,98 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial run
         updateScrollReveal();
     }
+
+    /* ==========================================================================
+       PROMISE SECTION — HORIZONTAL AUTO-SCROLL CAROUSEL
+       ========================================================================== */
+    (function() {
+        const wrapper = document.querySelector('.promise-track-wrapper');
+        const track = document.querySelector('.promise-track');
+        if (!wrapper || !track) return;
+
+        // Duplicate cards for seamless infinite loop
+        Array.from(track.querySelectorAll('.promise-card')).forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
+
+        let pos = 0;
+        let isPaused = false;
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartPos = 0;
+        const SPEED = 0.38; // px per frame — slow enough to read comfortably
+
+        function halfWidth() { return track.scrollWidth / 2; }
+        function setPos(p) { track.style.transform = `translateX(-${p}px)`; }
+
+        function loop() {
+            if (!isPaused) {
+                pos += SPEED;
+                if (pos >= halfWidth()) pos -= halfWidth();
+                setPos(pos);
+            }
+            requestAnimationFrame(loop);
+        }
+
+        // Pause on hover (desktop)
+        wrapper.addEventListener('mouseenter', () => { isPaused = true; });
+        wrapper.addEventListener('mouseleave', () => { if (!isDragging) isPaused = false; });
+
+        // Drag / touch to scroll
+        let touchHideTimer = null;
+        wrapper.addEventListener('pointerdown', (e) => {
+            isDragging = true;
+            isPaused = true;
+            dragStartX = e.clientX;
+            dragStartPos = pos;
+            wrapper.classList.add('touching');
+            clearTimeout(touchHideTimer);
+            e.preventDefault();
+        });
+        document.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            const diff = dragStartX - e.clientX;
+            const half = halfWidth();
+            pos = ((dragStartPos + diff) % half + half) % half;
+            setPos(pos);
+        });
+        document.addEventListener('pointerup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            setTimeout(() => { isPaused = false; }, 2000);
+            touchHideTimer = setTimeout(() => wrapper.classList.remove('touching'), 1500);
+        });
+
+        // Prev / Next buttons — smooth snap to next card
+        function snapBy(direction) {
+            const card = track.querySelector('.promise-card');
+            if (!card) return;
+            const step = card.offsetWidth + 28;
+            const half = halfWidth();
+            const target = ((pos + direction * step) % half + half) % half;
+            const startPos = pos;
+            let diff = target - startPos;
+            if (diff > half / 2) diff -= half;
+            if (diff < -half / 2) diff += half;
+            const duration = 520;
+            const t0 = performance.now();
+            isPaused = true;
+            function animate(now) {
+                const t = Math.min((now - t0) / duration, 1);
+                const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                pos = ((startPos + diff * ease) % half + half) % half;
+                setPos(pos);
+                if (t < 1) requestAnimationFrame(animate);
+                else setTimeout(() => { isPaused = false; }, 1800);
+            }
+            requestAnimationFrame(animate);
+        }
+
+        document.querySelector('.promise-prev')?.addEventListener('click', () => snapBy(-1));
+        document.querySelector('.promise-next')?.addEventListener('click', () => snapBy(1));
+
+        requestAnimationFrame(loop);
+    }());
 });
