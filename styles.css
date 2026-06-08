@@ -1605,6 +1605,7 @@ a {
     padding: 100px 0;
     background-color: var(--bg-white);
     border-top: 1px solid var(--secondary-light);
+    overflow: hidden;
 }
 
 .testimonials-grid {
@@ -2825,6 +2826,11 @@ a {
     .story-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .founder-highlight-box {
+        right: 10px;
+        bottom: 10px;
     }
     
     .story-visual {
