@@ -153,12 +153,6 @@ a {
     border-bottom: 1px solid var(--secondary-light);
     z-index: 99999 !important;
     transition: height var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-    /* GPU hardware acceleration to prevent mobile scroll disappearing/flicker */
-    transform: translate3d(0, 0, 0) !important;
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .main-header.scrolled {
@@ -362,9 +356,6 @@ a {
     border: none;
     cursor: pointer;
     z-index: 100000 !important;
-    /* GPU acceleration prevent menu toggle disappearance/flicker */
-    transform: translate3d(0, 0, 0) !important;
-    -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .hamburger-bar {
