@@ -1109,7 +1109,7 @@ a {
 .story-mission-callout {
     display: flex;
     gap: 16px;
-    align-items: flex-start;
+    align-items: center;
     background-color: var(--bg-white);
     border: 1px solid var(--secondary-light);
     border-left: 4px solid #C5A85A; /* Gold left accent line */
@@ -1120,11 +1120,10 @@ a {
 }
 
 .story-mission-icon {
-    width: 36px;
-    height: 36px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
 .story-mission-callout h4 {
