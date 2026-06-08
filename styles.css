@@ -763,7 +763,7 @@ a {
    SERVICES SECTION
    ========================================================================== */
 .services-section {
-    padding: 100px 0;
+    padding: 100px 0 0 0;
 }
 
 .medical-disclaimer {
@@ -2818,6 +2818,10 @@ a {
         padding: 14px 18px;
     }
     
+    .story-section {
+        padding: 60px 0;
+    }
+
     .story-grid {
         grid-template-columns: 1fr;
         gap: 40px;
