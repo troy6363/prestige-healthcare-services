@@ -582,7 +582,7 @@ a {
     color: var(--bg-white);
 }
 
-.hero-title .shine-text {
+.shine-text {
     font-family: var(--font-headings);
     font-style: italic;
     color: var(--accent-teal);

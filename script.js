@@ -321,8 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Split letters for sunshine shine effect
-    const shineText = document.querySelector('.shine-text');
-    if (shineText) {
+    const shineTexts = document.querySelectorAll('.shine-text');
+    shineTexts.forEach(shineText => {
         const text = shineText.textContent;
         shineText.textContent = '';
         [...text].forEach((char, index) => {
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             shineText.appendChild(span);
         });
-    }
+    });
 
     /* ==========================================================================
        6. CARD STACKING & IMAGE ZOOM SCROLL ANIMATION
