@@ -1119,6 +1119,14 @@ a {
     box-shadow: var(--shadow-sm);
 }
 
+.story-mission-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
 .story-mission-callout h4 {
     font-family: var(--font-ui);
     font-size: 16px;
