@@ -585,4 +585,36 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', handleMobileParallax);
         handleMobileParallax(); // Run initially
     }
+
+    /* ==========================================================================
+       8. SCROLL REVEAL TESTIMONIALS (MOBILE ONLY)
+       ========================================================================== */
+    const revealCards = document.querySelectorAll('.testimonial-card.reveal-left, .testimonial-card.reveal-right');
+    
+    if (revealCards.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once animate is done
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        const initScrollReveal = () => {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                revealCards.forEach(card => revealObserver.observe(card));
+            } else {
+                revealObserver.disconnect();
+                revealCards.forEach(card => card.classList.remove('active'));
+            }
+        };
+
+        initScrollReveal();
+        window.addEventListener('resize', initScrollReveal);
+    }
 });
