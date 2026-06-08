@@ -1015,35 +1015,43 @@ a {
 
 /* Responsive Overrides for Mobile and Tablet */
 @media (max-width: 768px) {
+    #services,
+    #story,
+    #promise,
+    #why-us,
+    #consultation {
+        scroll-margin-top: 160px; /* clear the sticky/hanging header logo on mobile */
+    }
+
     .services-stack-container {
         margin-top: 30px;
-        padding-bottom: 80px; /* Space to view final stacked deck on mobile */
+        padding-bottom: 30px; /* space to view cards on mobile */
     }
 
     .service-stack-card {
-        position: sticky;
-        top: 80px; /* clear smaller mobile header */
-        height: 520px; /* natural card height */
+        position: relative;
+        top: 0 !important;
+        height: auto;
         display: flex;
         justify-content: center;
         box-sizing: border-box;
     }
 
     .service-stack-card:not(:last-child) {
-        margin-bottom: 50px; /* mobile flow spacing */
+        margin-bottom: 30px; /* mobile flow spacing */
     }
 
     .service-card-inner {
         width: 92%;
         max-width: 100%;
-        height: 520px;
+        height: auto;
         border-radius: 16px;
-        /* slightly smaller stacking offset on mobile to save vertical space */
-        top: calc(10px + var(--card-index) * 15px);
+        top: 0 !important;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .service-card-text {
+        height: auto;
         padding: 32px 20px;
     }
 

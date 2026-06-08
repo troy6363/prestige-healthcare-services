@@ -377,10 +377,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let ticking = false;
         
         const updateCardAnimation = () => {
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                cards.forEach((card, index) => {
+                    const innerCard = innerCards[index];
+                    const image = images[index];
+                    if (innerCard) {
+                        innerCard.style.transform = '';
+                    }
+                    if (image) {
+                        image.style.transform = 'scale(1) translateZ(0)';
+                    }
+                });
+                ticking = false;
+                return;
+            }
+
             const currentScrollY = window.scrollY;
             const viewportHeight = window.innerHeight;
-            const isMobile = window.innerWidth <= 768;
-            const stickyTop = isMobile ? 80 : 100;
+            const stickyTop = 100;
             
             // Container overall scroll progress (start start to end end) calculated using cached document offsets
             const rectTop = containerOffsetTop - currentScrollY;
