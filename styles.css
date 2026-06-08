@@ -2682,6 +2682,21 @@ a {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
         will-change: transform;
+        min-height: 70px;
+    }
+
+    .main-header.scrolled {
+        min-height: 60px;
+        background-color: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        z-index: 99999 !important;
+    }
+
+    .header-logo {
+        height: 110px;
+        margin: -5px 0 -25px 0;
+        max-width: 150px;
     }
 
     /* Responsive Header & Hamburger Navigation */
@@ -2708,19 +2723,12 @@ a {
         display: none !important;
     }
 
-    .main-header.scrolled {
-        background-color: rgba(255, 255, 255, 0.75) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        z-index: 99999 !important;
-    }
-
     .nav-menu {
         position: fixed !important;
-        top: var(--header-height);
+        top: 70px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - var(--header-height));
+        height: calc(100vh - 70px);
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
@@ -2735,8 +2743,8 @@ a {
     }
 
     .main-header.scrolled .nav-menu {
-        top: 70px;
-        height: calc(100vh - 70px);
+        top: 60px;
+        height: calc(100vh - 60px);
     }
 
     .nav-menu.active {
@@ -2957,19 +2965,9 @@ a {
     }
 
     .header-logo {
-        height: 135px;
-        margin: -5px 0 -30px 0;
-        max-width: 170px;
-    }
-    
-
-
-    .header-actions .header-phone-link {
-        font-size: 14px;
-    }
-
-    .header-actions .phone-label {
-        font-size: 10px;
+        height: 90px;
+        margin: -5px 0 -20px 0;
+        max-width: 130px;
     }
 
     .hero-section {
@@ -3034,16 +3032,6 @@ a {
 /* Up to 360px (Extra Small Mobile Phones) */
 @media (max-width: 360px) {
     .header-logo {
-        max-width: 140px;
-    }
-    
-
-
-    .header-actions .header-phone-link {
-        font-size: 12px;
-    }
-
-    .header-actions .phone-label {
-        font-size: 8px;
+        max-width: 110px;
     }
 }
