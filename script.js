@@ -572,8 +572,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentPos = viewportHeight - rect.top;
                 const scrollProgress = currentPos / totalRange;
                 
-                // Map progress to vertical translation (-15% to 15% of container height)
-                const maxTranslate = rect.height * 0.15; // 15% of container height (e.g. 67.5px)
+                // Map progress to vertical translation (-30% to 30% of container height)
+                const maxTranslate = rect.height * 0.30; // 30% of container height (e.g. 135px)
                 const translateY = (scrollProgress - 0.5) * -2 * maxTranslate;
                 
                 // Hardware-accelerated GPU translation

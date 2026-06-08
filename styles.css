@@ -1430,8 +1430,8 @@ a {
     
     .parallax-bg-img {
         position: absolute;
-        height: 130%; /* 30% scroll budget to allow translation parallax */
-        top: -15%; /* Centers the image initially */
+        height: 160%; /* 60% scroll budget to allow larger translation parallax */
+        top: -30%; /* Centers the image initially at -30% offset */
         width: 100%;
         object-fit: cover;
         object-position: center;
