@@ -53,6 +53,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -88,7 +89,7 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     z-index: -2;
     overflow: hidden;
@@ -2686,34 +2687,25 @@ a {
     /* Responsive Header & Hamburger Navigation */
     .header-container {
         display: flex;
-        flex-wrap: wrap;
+        justify-content: space-between;
         align-items: center;
         padding: 0 16px;
     }
 
     /* Logo stays left */
     .logo-link {
-        flex: 0 0 auto;
-        order: 1;
+        display: flex;
+        align-items: center;
     }
 
     /* Hamburger pushed to far right on the same row as logo */
     .menu-toggle {
-        flex: 0 0 auto;
-        margin-left: auto;
         display: flex;
-        order: 2;
     }
 
-    /* Phone number on its own full-width row below, centered */
+    /* Hide desktop header actions (phone and action button) on mobile completely */
     .header-actions {
-        flex: 0 0 100%;
-        order: 3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 0 0 6px;
+        display: none !important;
     }
 
     .main-header.scrolled {
@@ -2755,30 +2747,23 @@ a {
         font-size: 18px;
     }
 
+    /* Show phone link inside the mobile menu drawer for mobile users */
     .mobile-only-phone {
-        display: none;
-    }
-
-    .header-actions .nav-action-btn {
-        display: none;
-    }
-
-    .header-actions .header-phone-link {
-        margin-right: 0;
-        font-size: 13px;
-        display: inline-flex;
+        display: inline-flex !important;
         align-items: center;
+        gap: 8px;
+        font-family: var(--font-ui);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--primary);
     }
 
-    .header-actions .header-phone-link > span {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
+    .mobile-only-phone .header-phone-icon {
+        color: var(--accent);
     }
 
-    .header-actions .phone-label {
-        font-size: 11px;
+    .mobile-only-phone:hover {
+        color: var(--accent);
     }
     
     .mobile-only-btn {
