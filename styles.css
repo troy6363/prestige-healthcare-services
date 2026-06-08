@@ -196,10 +196,7 @@ a {
     transition: var(--transition-fast);
 }
 
-.main-header.scrolled .header-logo {
-    height: 125px;
-    margin: -5px 0 -35px 0;
-}
+
 
 .logo-emblem {
     width: 38px;
@@ -2762,11 +2759,7 @@ a {
         max-width: 170px;
     }
     
-    .main-header.scrolled .header-logo {
-        height: 105px;
-        margin: -5px 0 -30px 0;
-        max-width: 140px;
-    }
+
 
     .header-actions .header-phone-link {
         font-size: 14px;
@@ -2841,9 +2834,7 @@ a {
         max-width: 140px;
     }
     
-    .main-header.scrolled .header-logo {
-        max-width: 120px;
-    }
+
 
     .header-actions .header-phone-link {
         font-size: 12px;
