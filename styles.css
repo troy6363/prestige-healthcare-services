@@ -464,6 +464,8 @@ a {
     }
     .mobile-only-video {
         display: block;
+        transform: scale(1.06);
+        transform-origin: center top;
     }
 }
 
