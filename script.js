@@ -592,29 +592,66 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealCards = document.querySelectorAll('.testimonial-card.reveal-left, .testimonial-card.reveal-right');
     
     if (revealCards.length > 0) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Stop observing once animate is done
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        const initScrollReveal = () => {
+        let revealTicking = false;
+        
+        const updateScrollReveal = () => {
             const isMobile = window.innerWidth <= 768;
-            if (isMobile) {
-                revealCards.forEach(card => revealObserver.observe(card));
-            } else {
-                revealObserver.disconnect();
-                revealCards.forEach(card => card.classList.remove('active'));
+            const viewportHeight = window.innerHeight;
+            
+            revealCards.forEach(card => {
+                if (!isMobile) {
+                    card.style.transform = '';
+                    card.style.opacity = '';
+                    return;
+                }
+                
+                const rect = card.getBoundingClientRect();
+                const cardHeight = rect.height;
+                
+                // Scroll reveal range
+                // Start revealing when the top of the card touches the bottom of the viewport
+                const startY = viewportHeight;
+                // Fully reveal when the card's top reaches 60% of the viewport height
+                const endY = viewportHeight * 0.6;
+                
+                let progress = 0;
+                if (rect.top <= endY) {
+                    progress = 1;
+                } else if (rect.top >= startY) {
+                    progress = 0;
+                } else {
+                    progress = (startY - rect.top) / (startY - endY);
+                }
+                
+                // Max offset to translate in pixels
+                const maxOffset = 60;
+                const isLeft = card.classList.contains('reveal-left');
+                
+                // Apply a smoothstep easing curve for a premium feel
+                const easedProgress = progress * progress * (3 - 2 * progress);
+                
+                const translateX = isLeft ? -maxOffset * (1 - easedProgress) : maxOffset * (1 - easedProgress);
+                
+                card.style.transform = `translate3d(${translateX}px, 0, 0)`;
+                card.style.opacity = easedProgress;
+            });
+            revealTicking = false;
+        };
+        
+        const onRevealScroll = () => {
+            if (!revealTicking) {
+                window.requestAnimationFrame(updateScrollReveal);
+                revealTicking = true;
             }
         };
-
-        initScrollReveal();
-        window.addEventListener('resize', initScrollReveal);
+        
+        window.addEventListener('scroll', onRevealScroll, { passive: true });
+        window.addEventListener('resize', () => {
+            updateScrollReveal();
+            onRevealScroll();
+        }, { passive: true });
+        
+        // Initial run
+        updateScrollReveal();
     }
 });

@@ -1396,27 +1396,12 @@ a {
     overflow: hidden;
 }
 
-/* Top and bottom gradient fades to blend the image smoothly into surrounding sections */
-.parallax-bg-wrapper::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, 
-        #ffffff 0%, 
-        rgba(255, 255, 255, 0) 15%, 
-        rgba(248, 250, 252, 0) 85%, 
-        #f8fafc 100%
-    );
-    z-index: 3; /* Sits on top of the image and the navy tint */
-    pointer-events: none;
-}
-
 /* Subtle brand navy gradient overlay to tint the photo */
 .parallax-bg-wrapper::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(15, 44, 89, 0.25) 0%, rgba(15, 44, 89, 0.5) 100%);
+    display: none; /* Removed gradient overlay per user request */
     z-index: 2; /* Sits directly on top of the fixed background image */
     pointer-events: none;
 }
@@ -2741,24 +2726,10 @@ a {
     }
     
     /* Scroll Reveal Animations (Mobile Only) */
-    .testimonial-card.reveal-left {
-        opacity: 0;
-        transform: translate3d(-50px, 0, 0);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        will-change: transform, opacity;
-    }
-    
+    .testimonial-card.reveal-left,
     .testimonial-card.reveal-right {
-        opacity: 0;
-        transform: translate3d(50px, 0, 0);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         will-change: transform, opacity;
-    }
-    
-    .testimonial-card.reveal-left.active,
-    .testimonial-card.reveal-right.active {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+        transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 }
 
