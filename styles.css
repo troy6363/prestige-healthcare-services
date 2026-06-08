@@ -144,18 +144,18 @@ a {
    HEADER & NAVIGATION
    ========================================================================== */
 .main-header {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
     height: var(--header-height);
     background-color: #ffffff;
     border-bottom: 1px solid var(--secondary-light);
-    z-index: 1000;
+    z-index: 99999 !important;
     transition: height var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
     /* GPU hardware acceleration to prevent mobile scroll disappearing/flicker */
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
     will-change: transform;
 }
 
@@ -166,6 +166,7 @@ a {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    z-index: 99999 !important;
 }
 
 .header-container {
@@ -361,10 +362,10 @@ a {
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 100000 !important;
     /* GPU acceleration prevent menu toggle disappearance/flicker */
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .hamburger-bar {
@@ -2540,7 +2541,7 @@ a {
     }
     
     .nav-menu {
-        position: fixed;
+        position: fixed !important;
         top: var(--header-height);
         left: -100%;
         width: 100%;
@@ -2555,7 +2556,7 @@ a {
         gap: 36px;
         transition: var(--transition-smooth);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        z-index: 999;
+        z-index: 99998 !important;
     }
     
     .main-header.scrolled .nav-menu {
