@@ -3084,3 +3084,299 @@ a {
         max-width: 140px;
     }
 }
+
+/* ==========================================================================
+   OFFICE HOURS PAGE STYLING
+   ========================================================================== */
+.hours-section {
+    padding: 60px 0 100px 0;
+    position: relative;
+    z-index: 10;
+    background-color: transparent;
+}
+
+.hours-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: stretch;
+    margin-bottom: 56px;
+}
+
+.hours-card,
+.support-card {
+    background: var(--bg-glow-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid var(--secondary-light);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.hours-card:hover,
+.support-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hours-card:hover {
+    border-color: rgba(197, 168, 90, 0.35);
+}
+
+.hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    justify-content: center;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(15, 44, 89, 0.1);
+    transition: var(--transition-fast);
+}
+
+.hours-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hours-day {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hours-day-icon {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.hours-time {
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--primary-light);
+    padding: 6px 16px;
+    border-radius: var(--border-radius-round);
+    background-color: rgba(15, 44, 89, 0.04);
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.hours-row.active .hours-time {
+    background-color: rgba(197, 168, 90, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(197, 168, 90, 0.25);
+    font-weight: 700;
+}
+
+.hours-row.by-appointment .hours-time {
+    background-color: rgba(45, 212, 191, 0.08);
+    color: #0d9488;
+    border: 1px solid rgba(45, 212, 191, 0.2);
+}
+
+.hours-row.closed .hours-time {
+    background-color: rgba(148, 163, 184, 0.1);
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Support Card Styling */
+.support-card {
+    border-left: 5px solid var(--accent);
+}
+
+.support-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.support-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(197, 168, 90, 0.12);
+    color: var(--accent);
+    flex-shrink: 0;
+    animation: supportPulse 2.5s infinite ease-in-out;
+}
+
+.support-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+}
+
+.support-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #475569;
+}
+
+.support-content p strong {
+    color: var(--primary);
+}
+
+.support-badge-container {
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+.support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-md);
+    background-color: rgba(15, 44, 89, 0.04);
+    border: 1px solid rgba(15, 44, 89, 0.08);
+    color: var(--primary-light);
+    font-weight: 600;
+    font-size: 13.5px;
+}
+
+.support-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    display: inline-block;
+    animation: supportBlink 1.5s linear infinite;
+}
+
+/* Call to Action Container */
+.hours-cta-card {
+    text-align: center;
+    padding: 48px 32px;
+    border-radius: var(--border-radius-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--bg-white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 24px;
+}
+
+.hours-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(197, 168, 90, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hours-cta-card h3 {
+    color: var(--bg-white);
+    font-size: 26px;
+    margin-bottom: 12px;
+    font-family: var(--font-headings);
+}
+
+.hours-cta-card p {
+    color: #cbd5e1;
+    font-size: 15.5px;
+    margin-bottom: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hours-cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.hours-cta-card .btn-secondary {
+    color: var(--bg-white);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hours-cta-card .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--bg-white);
+}
+
+/* Animations */
+@keyframes supportPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(197, 168, 90, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(197, 168, 90, 0);
+    }
+}
+
+@keyframes supportBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Responsive Media Queries for Hours Page */
+@media (max-width: 992px) {
+    .hours-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hours-card,
+    .support-card {
+        padding: 30px 20px;
+    }
+
+    .hours-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 12px;
+    }
+
+    .hours-time {
+        align-self: flex-start;
+    }
+    
+    .hours-cta-card {
+        padding: 36px 20px;
+    }
+    
+    .hours-cta-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hours-cta-actions .btn {
+        width: 100%;
+    }
+}
+
